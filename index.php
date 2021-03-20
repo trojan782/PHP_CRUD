@@ -29,6 +29,13 @@
 //     echo "connection failed: ".$e->getMessage();
 // }
 ?>
-<?php include('header.php') ?>
-<?php include('insert.php') ?>
+<?php include('header.php');
+require_once 'functions.php';
+?>
+
+<div class="container">
+    <div class="row">
+        <?php get_all_data();?>
+    </div>
+</div>
 <?php include('footer.php') ?>

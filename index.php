@@ -30,6 +30,5 @@
 // }
 ?>
 <?php include('header.php') ?>
-
-content
+<?php include('insert.php') ?>
 <?php include('footer.php') ?>

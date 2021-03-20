@@ -18,8 +18,21 @@ function get_all_data()
                 <img src="..." alt="card image cap" class="card-img-top">
 
                 <div class = "card-body">
+                <h4><a class="text-secondary" href="single.php?id='.$row['id'].'">'.$row['title'].'</a></h4>
+
+                <p class="card-text">
+                '.htmlspecialchars_decode(substr($row['content'], 0, 100)) . '...
+                </p>
                 
+
+                <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                <a href = "single.php?id=' .$row['id'].'" class="btn-sm btn-outline-primary" role="button" aria-pressed="true">View</a>
+                </div>
                 
+                <small class="text-muted">9 mins</small>
+                </div>
+
                 </div>
                 </div>
             </div>

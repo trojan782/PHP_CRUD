@@ -28,6 +28,8 @@ function get_all_data()
                 <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                 <a href = "single.php?id=' .$row['id'].'" class="btn-sm btn-outline-primary" role="button" aria-pressed="true">View</a>
+
+                <a href="update.php?id='.$row['id'].'" class="btn btn sm btn-outline-secondary" role="button aria-pressed="true">Edit</a>
                 </div>
                 
                 <small class="text-muted">9 mins</small>

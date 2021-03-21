@@ -14,7 +14,7 @@ function get_all_data()
         while ($row = mysqli_fetch_assoc($result)) {
             echo '
             <div class="card" style="width: 18rem;">
-  <img src="..." class="card-img-top" alt="...">
+  <img src="https://banner2.cleanpng.com/20180624/ygl/kisspng-php-computer-icons-logo-filename-extension-php-logo-5b3022cdbb7a50.1988404515298812937679.jpg" class="card-img-top" alt="...">
   <div class="card-body">
     <h5 class="card-title" href="single.php?id='.$row['id'].'">'.$row['title'].'</h5>
 
@@ -32,5 +32,26 @@ function get_all_data()
 
             ';
         }
+    }
+}
+
+// to insert into the database
+if(isset($_POST['title']) && isset($_POST['content'])) {
+
+    //check title and content empty or not
+    if(!empty($_POST['title']) && !empty($_POST['content'])) {
+        $title = mysqli_real_escape_string($conn, htmlspecialchars($_POST['title']));
+
+        $content = mysqli_real_escape_string($conn, htmlspecialchars($_POST['content']));
+
+        //check if title already exists
+        $check_content = mysqli_query($conn, "SELECT 'title' FROM posts WHERE content = '$title'");
+
+        if(mysqli_num_rows($check_content) > 0) {
+            echo "<h3>This title already exists - please try a different title name</h3>";
+        }
+
+    }else{
+        echo "<h4>Please fill all fields</h4>";
     }
 }

@@ -13,31 +13,23 @@ function get_all_data()
         echo '<div class="col-12 pt-5><h1>All Posts</h1></div>';
         while ($row = mysqli_fetch_assoc($result)) {
             echo '
-            <div class="col-md-4">
-                <div class="card mb-4 box-shadow">
-                <img src="..." alt="card image cap" class="card-img-top">
+            <div class="card" style="width: 18rem;">
+  <img src="..." class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title" href="single.php?id='.$row['id'].'">'.$row['title'].'</h5>
 
-                <div class = "card-body">
-                <h4><a class="text-secondary" href="single.php?id='.$row['id'].'">'.$row['title'].'</a></h4>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the cards content.</p>
+    
+    <div class="btn-group">
+    <a href = "single.php?id=' .$row['id'].'" class="btn-sm btn-outline-primary" role="button" aria-pressed="true">View</a>
 
-                <p class="card-text">
-                '.htmlspecialchars_decode(substr($row['content'], 0, 100)) . '...
-                </p>
-                
+    <a href="update.php?id='.$row['id'].'" class="btn btn-sm btn-outline-secondary" role="button aria-pressed="true">Edit</a>
 
-                <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                <a href = "single.php?id=' .$row['id'].'" class="btn-sm btn-outline-primary" role="button" aria-pressed="true">View</a>
+    </div>
+    <small class="text-muted">9 mins</small>
+  </div>
+</div>
 
-                <a href="update.php?id='.$row['id'].'" class="btn btn sm btn-outline-secondary" role="button aria-pressed="true">Edit</a>
-                </div>
-                
-                <small class="text-muted">9 mins</small>
-                </div>
-
-                </div>
-                </div>
-            </div>
             ';
         }
     }

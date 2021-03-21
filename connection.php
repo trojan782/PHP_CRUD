@@ -12,9 +12,9 @@ $dbname = 'cms';
 //     die("connection failed: " . mysqli_connect_error());
 // }
 //database connection
-$mysqli = new mysqli($host, $user, $password, $dbname); 
+$conn = new mysqli($host, $user, $password, $dbname); 
 
 //check connection
-if(!$mysqli) {
-    die("connection failed:" . mysqli_error($mysqli));
+if(!$conn) {
+    die("connection failed:" . mysqli_error($conn));
 }

@@ -5,8 +5,8 @@ require_once 'connection.php';
 
 function get_all_data()
 {
-    global $mysqli;
-    $result = mysqli_query($mysqli, "SELECT * FROM posts");
+    global $conn;
+    $result = mysqli_query($conn, "SELECT * FROM posts");
 
     if (mysqli_num_rows($result) > 0) {
 
@@ -37,38 +37,39 @@ function get_all_data()
 }
 
 // to insert into the database
-// if(isset($_POST['title']) && isset($_POST['content'])) {
+if(isset($_POST['title']) && isset($_POST['content'])) {
 
-//     //check title and content empty or not
-//     if(!empty($_POST['title']) && !empty($_POST['content'])) {
-//         $title = mysqli_real_escape_string($mysqli, htmlspecialchars($_POST['title']));
+    //check title and content empty or not
+    if(!empty($_POST['title']) && !empty($_POST['content'])) {
+        $title = mysqli_real_escape_string($conn, htmlspecialchars($_POST['title']));
 
-//         $content = mysqli_real_escape_string($mysqli, htmlspecialchars($_POST['content']));
+        $content = mysqli_real_escape_string($conn, htmlspecialchars($_POST['content']));
 
-//         //check if title already exists
-//         // $check_content = mysqli_query($mysqli, "SELECT 'title' FROM posts WHERE content = '$title'");
-//         $check_content = $mysqli->query($mysqli, "SELECT 'title' FROM posts WHERE content = '$title'");
+        //check if title already exists
+        // $check_content = mysqli_query($conn, "SELECT 'title' FROM posts WHERE content = '$title'");
+        $check_content = $conn->query($conn, "SELECT 'title' FROM posts WHERE content = '$title'");
 
 
-//         if(mysqli_num_rows($check_content) > 0) {
-//             echo "<h3>This title already exists - please try a different title name</h3>";
-//         }
-//         else {
-//             //insert data into database
-//             $insert_query = $mysqli->query($mysqli, "INSERT INTO posts (title, content) VALUES('$title', '$content')");
-//             if(isset($_POST['submit'])) {
+        if(mysqli_num_rows($check_content) > 0) {
+            echo "<h3>This title already exists - please try a different title name</h3>";
+        }
+        else {
+            //insert data into database
+            $insert_query = $conn->query($conn, "INSERT INTO posts (title, content) VALUES('$title', '$content')");
+            if(isset($_POST['submit'])) {
 
-//             }
-//             //Now check if data has been inserted
-//             if($insert_query) {
-//                 echo "<script>alert('Data inserted');window.location.href = 'index.php'</script>";
-//                 exit;
-//             } else {
-//                 echo "<h3>Data was not inserted!</h3>";
-//             }
-//         }
+            }
+            //Now check if data has been inserted
+            if($insert_query) {
+                echo "<script>alert('Data inserted');window.location.href = 'index.php'</script>";
+                exit;
+            } else {
+                echo "<h3>Data was not inserted!</h3>";
+            }
+        }
 
-//     }else{
-//         echo "<h4>Please fill all fields</h4>";
-//     }
-// }
+    }else{
+        echo "<h4>Please fill all fields</h4>";
+    }
+}
+

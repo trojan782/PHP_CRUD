@@ -17,7 +17,7 @@ function get_all_data()
             <div class="card" style="width: 18rem;">
   <img src="https://banner2.cleanpng.com/20180624/ygl/kisspng-php-computer-icons-logo-filename-extension-php-logo-5b3022cdbb7a50.1988404515298812937679.jpg" class="card-img-top" alt="...">
   <div class="card-body">
-    <h5 class="card-title" href="single.php?id='.$row['id'].'">'.$row['title'].'</h5>
+    <h5 class="card-title"><a class="text-secondary" href="single.php?id='.$row['id'].'">'.$row['title'].'</a></h5>
 
     <p class="card-text">'.htmlspecialchars_decode(substr($row['content'], 0, 100)) . '...</p>
     

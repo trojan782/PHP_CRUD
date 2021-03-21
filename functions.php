@@ -46,8 +46,8 @@ if(isset($_POST['title']) && isset($_POST['content'])) {
         $content = mysqli_real_escape_string($conn, htmlspecialchars($_POST['content']));
 
         //check if title already exists
-        // $check_content = mysqli_query($conn, "SELECT 'title' FROM posts WHERE content = '$title'");
-        $check_content = $conn->query($conn, "SELECT 'title' FROM posts WHERE content = '$title'");
+        $check_content = mysqli_query($conn, "SELECT 'title' FROM posts WHERE content = '$title'");
+        // $check_content = $conn->query($conn, "SELECT 'title' FROM posts WHERE content = '$title'");
 
 
         if(mysqli_num_rows($check_content) > 0) {
@@ -55,10 +55,8 @@ if(isset($_POST['title']) && isset($_POST['content'])) {
         }
         else {
             //insert data into database
-            $insert_query = $conn->query($conn, "INSERT INTO posts (title, content) VALUES('$title', '$content')");
-            if(isset($_POST['submit'])) {
-
-            }
+            $insert_query = mysqli_query($conn, "INSERT INTO posts (title,content) VALUES('$title', '$content')");
+           
             //Now check if data has been inserted
             if($insert_query) {
                 echo "<script>alert('Data inserted');window.location.href = 'index.php'</script>";

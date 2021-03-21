@@ -50,6 +50,18 @@ if(isset($_POST['title']) && isset($_POST['content'])) {
         if(mysqli_num_rows($check_content) > 0) {
             echo "<h3>This title already exists - please try a different title name</h3>";
         }
+        else {
+            //insert data into database
+            $insert_query = mysqli_query($conn, "INSERT INTO posts (title, content) VALUES('$title', '$content')");
+
+            //Now check if data has been inserted
+            if($insert_query) {
+                echo "<script>alert('Data inserted');window.location.href = 'index.php'</script>";
+                exit;
+            } else {
+                echo "<h3>Data was not inserted!</h3>";
+            }
+        }
 
     }else{
         echo "<h4>Please fill all fields</h4>";

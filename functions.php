@@ -18,10 +18,10 @@ function get_all_data()
   <div class="card-body">
     <h5 class="card-title" href="single.php?id='.$row['id'].'">'.$row['title'].'</h5>
 
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the cards content.</p>
+    <p class="card-text">'.htmlspecialchars_decode(substr($row['content'], 0, 100)) . '...</p>
     
     <div class="btn-group">
-    <a href = "single.php?id=' .$row['id'].'" class="btn-sm btn-outline-primary" role="button" aria-pressed="true">View</a>
+    <a href = "single.php?id=' .$row['id'].'" class="btn btn-outline-primary" role="button" aria-pressed="true">View</a>
 
     <a href="update.php?id='.$row['id'].'" class="btn btn-sm btn-outline-secondary" role="button aria-pressed="true">Edit</a>
 

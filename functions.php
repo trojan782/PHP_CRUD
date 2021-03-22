@@ -81,5 +81,12 @@ function update_get() {
             $row = mysqli_fetch_assoc($get_id);
             return($row);
         }
+        $get_title = $_POST['update_title'];
+        $get_content = $_POST['update_content'];
+        $update_query = mysqli_query($conn, "UPDATE posts SET title='$get_title, content='$get_content' WHERE id='$id");
+
+        if($update_query) {
+            echo 'Post updated!';
+        }
     }
 }

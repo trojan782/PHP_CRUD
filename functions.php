@@ -71,22 +71,22 @@ if(isset($_POST['title']) && isset($_POST['content'])) {
     }
 }
 
-function update_get() {
-    if(isset($_GET['id']) && is_numeric($_GET['id'])) {
-        global $conn;
-        $id = $_GET['id'];
-        $get_id = mysqli_query($conn, "SELECT * FROM posts WHERE id='$id'");
+// function update_get() {
+//     if(isset($_GET['id']) && is_numeric($_GET['id'])) {
+//         global $conn;
+//         $id = $_GET['id'];
+//         $get_id = mysqli_query($conn, "SELECT * FROM posts WHERE id='$id'");
 
-        if(mysqli_num_rows($get_id) === 1) {
-            $row = mysqli_fetch_assoc($get_id);
-            return($row);
-        }
-        $get_title = $_POST['update_title'];
-        $get_content = $_POST['update_content'];
-        $update_query = mysqli_query($conn, "UPDATE posts SET title='$get_title, content='$get_content' WHERE id='$id");
+//         if(mysqli_num_rows($get_id) === 1) {
+//             $row = mysqli_fetch_assoc($get_id);
+//             return($row);
+//         }
+//         $get_title = $_POST['update_title'];
+//         $get_content = $_POST['update_content'];
+//         $update_query = mysqli_query($conn, "UPDATE posts SET title='$get_title, content='$get_content' WHERE id='$get_id");
 
-        if($update_query) {
-            echo 'Post updated!';
-        }
-    }
-}
+//         if($update_query) {
+//             echo 'Post updated!';
+//         }
+//     }
+// }

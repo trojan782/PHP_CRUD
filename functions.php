@@ -8,14 +8,14 @@ function get_all_data()
     global $conn;
     $result = mysqli_query($conn, "SELECT * FROM posts");
 
-    if (mysqli_num_rows($result) > 0) {
+    if(mysqli_num_rows($result) > 0) {
 
         echo '<h1>All Posts</h1>';
 
         while ($row = mysqli_fetch_assoc($result)) {
             echo '
             <div class="card" style="width: 18rem;">
-  <img src="https://banner2.cleanpng.com/20180624/ygl/kisspng-php-computer-icons-logo-filename-extension-php-logo-5b3022cdbb7a50.1988404515298812937679.jpg" class="card-img-top" alt="...">
+  <img src="..." class="card-img-top" alt="...">
   <div class="card-body">
     <h5 class="card-title"><a class="text-secondary" href="single.php?id='.$row['id'].'">'.$row['title'].'</a></h5>
 
@@ -46,7 +46,7 @@ if(isset($_POST['title']) && isset($_POST['content'])) {
         $content = mysqli_real_escape_string($conn, htmlspecialchars($_POST['content']));
 
         //check if title already exists
-        $check_content = mysqli_query($conn, "SELECT 'title' FROM posts WHERE content = '$title'");
+        $check_content = mysqli_query($conn, "SELECT 'title' FROM posts WHERE title = '$title'");
         // $check_content = $conn->query($conn, "SELECT 'title' FROM posts WHERE content = '$title'");
 
 
@@ -71,3 +71,15 @@ if(isset($_POST['title']) && isset($_POST['content'])) {
     }
 }
 
+function update_get() {
+    if(isset($_GET['id']) && is_numeric($_GET['id'])) {
+        global $conn;
+        $id = $_GET['id'];
+        $get_id = mysqli_query($conn, "SELECT * FROM posts WHERE id='$id'");
+
+        if(mysqli_num_rows($get_id) === 1) {
+            $row = mysqli_fetch_assoc($get_id);
+            return($row);
+        }
+    }
+}

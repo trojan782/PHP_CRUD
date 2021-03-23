@@ -109,6 +109,7 @@ function update_get()
             $content =mysqli_real_escape_string($conn, htmlspecialchars($_POST['update_content']));
 
             $update_query = mysqli_query($conn, "UPDATE posts SET title='$title', content='$content' WHERE id='$id'");
+            $id = $_GET['id'];
             if($update_query) {
                 echo '<h2>Updated successfully!</h2>';
             }

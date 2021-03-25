@@ -36,6 +36,8 @@ require_once 'functions.php';
 <div class="container">
     <div class="row">
         <?php get_all_data();?>
+        <?php update_get(); ?>
+        <?php delete_data(); ?>
     </div>
 </div>
 <?php include('footer.php') ?>

@@ -100,22 +100,25 @@ function update_get()
             $row = mysqli_fetch_assoc($get_id);
             return ($row);
         }
+        
     }
-    if(isset($_POST['update_title']) && isset($_POST['update_content'])) {
+}
+if (isset($_POST['update_title']) && isset($_POST['update_content'])) {
 
-        //check if items are empty
-        if(!empty($_POST['update_title'])&& !empty($_POST['update_content'])) {
-            $title = mysqli_real_escape_string($conn, htmlspecialchars($_POST['update_title']));
-            $content =mysqli_real_escape_string($conn, htmlspecialchars($_POST['update_content']));
+    //check if items are empty
+    if (!empty($_POST['update_title']) && !empty($_POST['update_content'])) {
+        $title = mysqli_real_escape_string($conn, htmlspecialchars($_POST['update_title']));
+        $content = mysqli_real_escape_string($conn, htmlspecialchars($_POST['update_content']));
 
-            $update_query = mysqli_query($conn, "UPDATE posts SET title='$title', content='$content' WHERE id='$id'");
-            $id = $_GET['id'];
-            if($update_query) {
-                echo '<h2>Updated successfully!</h2>';
-            }
+        $id = $_GET['id'];
+        $update_query = mysqli_query($conn, "UPDATE posts SET title='$title',content='$content' WHERE id='$id'");
+        if ($update_query) {
+            echo "<script>alert('Data Updated');window.location.href = 'index.php'</script>";
+            exit;
+        } else {
+            echo "<script>alert('Data Not Inserted');window.location.href = 'update.php'</script>";
         }
-        else {
-            echo '<h1>Please fill in all fields!</h1>';
-        }
+    } else {
+        echo '<h1>Please fill in all fields!</h1>';
     }
 }

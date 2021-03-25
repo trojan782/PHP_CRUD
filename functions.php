@@ -126,5 +126,20 @@ if (isset($_POST['update_title']) && isset($_POST['update_content'])) {
 //delete feature
 function delete_data()
 {
+    if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+        global $conn;
+        $userid = $_GET['id'];
+        $delete_id = mysqli_query($conn, "DELETE FROM posts WHERE id='$userid'");
+        
+        if($delete_id) {
+            echo "<script>alert('successfully deleted');window.location.href = 'index.php'</script>";
+            exit;
+        }
+        else {
+            echo "<h1>Not deleted</h1>";
+        }
+    }
+}
+function get_all_edit_data() {
     
 }

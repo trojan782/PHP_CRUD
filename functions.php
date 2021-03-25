@@ -122,3 +122,9 @@ if (isset($_POST['update_title']) && isset($_POST['update_content'])) {
         echo '<h1>Please fill in all fields!</h1>';
     }
 }
+
+//delete feature
+function delete_data()
+{
+    
+}

@@ -141,5 +141,24 @@ function delete_data()
     }
 }
 function get_all_edit_data() {
+    global $conn;
+    $get_data = mysqli_query($conn, "SELECT * FROM posts");
+    if(mysqli_num_rows($get_data) > 0) {
+        echo '<table>
+        <tr>
+        <th><h2>Edit Data</h2></th>
+        </tr>';
     
+        while($row = mysqli_fetch_assoc($get_data)) {
+            echo '<tr>
+            <td>'.$row['title'].'</td>
+            <td>
+            <a href = "update.php?id='.$row['id'].'">Edit</a>
+            <a href = "delete.php?id='.$row['id'].'">Delete</a>
+            </td>
+            </tr>';
+        }
+        '</table>';
+    }
+
 }

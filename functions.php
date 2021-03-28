@@ -15,7 +15,7 @@ function get_all_data()
         while ($row = mysqli_fetch_assoc($result)) {
             echo '
             <div class="card" style="width: 18rem;">
-  <img src="..." class="card-img-top" alt="...">
+  <img src="https://via.placeholder.com/300x100" class="card-img-top" alt="...">
   <div class="card-body">
     <h5 class="card-title"><a class="text-secondary" href="single.php?id=' . $row['id'] . '">' . $row['title'] . '</a></h5>
 
